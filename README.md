@@ -4,6 +4,10 @@ Automatic beat-synced video editing.
 
 Feed it a song and raw footage. It analyzes the beats, maps the energy, tags every scene, and cuts a ready-to-post edit — zero manual editing.
 
+**中文（卡点旅游）:** [README.zh.md](README.zh.md) · [docs/TRAVEL_VLOG.md](docs/TRAVEL_VLOG.md)
+
+This repository is a fork of [ZiadAbdelkarim/beat-synced-edit](https://github.com/ZiadAbdelkarim/beat-synced-edit) with an optional **Travel Vlog** one-command entry. Upstream CLI scripts are unchanged.
+
 ## Demos
 
 <!-- EMBED STEP (once, in GitHub's web editor): click the pencil on this README,
@@ -81,7 +85,7 @@ EDL       ──►  render_edit.py ──►  final MP4 (extract → concat →
 ## Quickstart
 
 ```bash
-pip install -r requirements.txt   # ffmpeg must be on PATH (brew install ffmpeg)
+pip install -r requirements.txt   # ffmpeg on PATH (Windows: winget install ffmpeg; macOS: brew install ffmpeg)
 
 python3 beat_map.py song.mp3
 python3 clip_tag.py footage.mp4 --thumbs
@@ -91,6 +95,28 @@ python3 render_edit.py footage_edl.json -a song.mp3 -v footage.mp4
 
 ---
 
+
+## Travel Vlog preset
+
+One-command pipeline for **beat-synced travel / 卡点旅游** edits (BGM + trip folder → MP4). Defaults favor breathing cuts and a calm establishing open; optional Douyin vertical.
+
+```bash
+python travel_vlog.py bgm.mp3 path/to/trip_folder/ -o out/travel_vlog.mp4
+python travel_vlog.py bgm.mp3 path/to/trip_folder/ --vertical -o out/douyin.mp4   # 9:16
+python travel_vlog.py --doctor   # check ffmpeg before a long run
+```
+
+| Default | Value |
+|---|---|
+| `--beat-stride` | `2` (not every beat) |
+| Calm open | lowest-motion clips as establishing leads |
+| Preset file | [`presets/travel_vlog.json`](presets/travel_vlog.json) |
+
+Full Chinese install (Windows/ffmpeg), recommended params, and how this differs from talking-head rough-cut (**jianying-windows-workflow**): **[README.zh.md](README.zh.md)**. Shot-order tips and BGM copyright warning: **[docs/TRAVEL_VLOG.md](docs/TRAVEL_VLOG.md)**. Example commands: [`examples/travel_vlog_quickstart.sh`](examples/travel_vlog_quickstart.sh).
+
+**BGM:** commercial / chart music is **not** free by default — clear Douyin/TikTok rights yourself.
+
+---
 ## Controlling the cut
 
 All creative control lives in `plan_edit.py`:
@@ -129,11 +155,11 @@ Prefer the command line? `python3 flash_montage.py --seq seq.json --audio song.w
 ## Requirements
 
 - Python 3.10+
-- ffmpeg on PATH
+- ffmpeg on PATH (Windows: `winget install ffmpeg`; macOS: `brew install ffmpeg`; Linux: distro package)
 - `pip install -r requirements.txt` — librosa, PySceneDetect, OpenCV, NumPy
 
 ---
 
 ## License
 
-[MIT](LICENSE)
+[MIT](LICENSE) — upstream © Ziad Abdelkarim ([ZiadAbdelkarim/beat-synced-edit](https://github.com/ZiadAbdelkarim/beat-synced-edit)). This fork keeps MIT and only adds travel-vlog convenience (docs + `travel_vlog.py`); it does not remove upstream scripts.

@@ -1,0 +1,17 @@
+{
+  "name": "travel_vlog",
+  "description": "卡点旅游 Vlog / beat-synced travel vlog — breathe cuts, calm open then energy rise",
+  "beat_stride": 2,
+  "calm_open_count": 2,
+  "full": false,
+  "segment": 1,
+  "vertical": false,
+  "vertical_fit": "squeeze:1500",
+  "vertical_grade": "warm",
+  "vertical_size": "1080x1920",
+  "scene_threshold": 27.0,
+  "notes": {
+    "zh": "默认隔拍切（stride=2）让镜头呼吸；开场优先低运动建立镜头；可选 --vertical 转抖音竖屏。BGM 请自行确认版权。",
+    "en": "Default beat-stride 2 so shots breathe; lead with low-motion establishing clips; optional --vertical for Douyin/TikTok. You must clear BGM rights yourself."
+  }
+}

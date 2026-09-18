@@ -1,2 +1,6 @@
 examples/preview_*.mp4
+examples/_travel_synth/
+.venv/
+__pycache__/
+*.pyc
 .DS_Store
